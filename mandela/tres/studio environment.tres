@@ -1,0 +1,16 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://ddttwxeee874a"]
+
+[ext_resource type="Texture2D" uid="uid://citfkpxwlxqp0" path="res://hdri/studio_small_08_2k.hdr" id="1_sc3ld"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_deahv"]
+panorama = ExtResource("1_sc3ld")
+
+[sub_resource type="Sky" id="Sky_emij8"]
+sky_material = SubResource("PanoramaSkyMaterial_deahv")
+process_mode = 1
+radiance_size = 6
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_emij8")
+sky_rotation = Vector3(0, 4.70017, 0)

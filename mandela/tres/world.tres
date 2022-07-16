@@ -1,0 +1,14 @@
+[gd_resource type="Environment" load_steps=4 format=3]
+
+[ext_resource type="Texture2D" path="res://hdri/studio_small_08_2k.hdr" id="1_hw2cv"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_deahv"]
+panorama = ExtResource("1_hw2cv")
+
+[sub_resource type="Sky" id="Sky_emij8"]
+sky_material = SubResource("PanoramaSkyMaterial_deahv")
+radiance_size = 6
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_emij8")

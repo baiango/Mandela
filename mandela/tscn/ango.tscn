@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://btfj524x0ua5f"]
+
+[ext_resource type="PackedScene" path="res://glb/ango 4.3.glb" id="1_eej0r"]
+[ext_resource type="Environment" path="res://tres/studio environment.tres" id="2_wyvbo"]
+[ext_resource type="Script" path="res://gd/scene_only.gd" id="3_etpgn"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8pa6j"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cvm1s"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_xksap"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ncs6a"]
+graph_offset = Vector2(-495.08, 9.29939)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_cvm1s")
+nodes/Animation/position = Vector2(-60, 60)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_8pa6j")
+"nodes/Animation 2/position" = Vector2(-60, 180)
+nodes/walk/node = SubResource("AnimationNodeBlend2_xksap")
+nodes/walk/position = Vector2(120, 100)
+node_connections = [&"output", 0, &"walk", &"walk", 0, &"Animation", &"walk", 1, &"Animation 2"]
+
+[node name="ango" instance=ExtResource("1_eej0r")]
+
+[node name="Armature" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00150861, 0)
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/12/rotation = Quaternion(-0.565283, 0.0105799, 0.0334867, 0.824149)
+bones/15/rotation = Quaternion(-0.0235798, -0.0306968, -0.121089, 0.991887)
+bones/33/rotation = Quaternion(-0.409542, -0.0270222, -0.304707, 0.859476)
+bones/36/rotation = Quaternion(-0.258749, -0.125499, 0.424829, 0.858382)
+bones/54/rotation = Quaternion(0.990829, 0.00290223, -0.00101464, 0.135084)
+bones/54/scale = Vector3(1, 1, 1.00019)
+bones/58/rotation = Quaternion(0.15794, 0.000139848, 0.00471497, 0.987437)
+bones/58/scale = Vector3(1, 0.999979, 1.00001)
+bones/61/rotation = Quaternion(0.999806, -0.000497438, 8.82834e-05, -0.019716)
+bones/61/scale = Vector3(1, 1, 1.00022)
+bones/65/rotation = Quaternion(0.0571204, -4.07194e-05, -0.000929145, 0.998367)
+bones/65/scale = Vector3(1, 0.999997, 1.00001)
+bones/68/position = Vector3(-0.171756, 0.970796, -0.0161688)
+bones/68/rotation = Quaternion(-0.662113, 0.23576, 0.666651, -0.248193)
+bones/69/position = Vector3(0.171756, 0.903659, 0.0506687)
+bones/69/rotation = Quaternion(-0.595268, -0.370437, -0.602314, -0.381641)
+bones/70/position = Vector3(-0.0700689, 0.0183644, -0.0884782)
+bones/70/rotation = Quaternion(0.938316, 0, 0, -0.345779)
+bones/71/position = Vector3(0.0700688, 0.0499548, 0.138963)
+bones/71/rotation = Quaternion(0.803078, 3.0876e-08, 2.0846e-07, -0.595873)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="2"]
+environment = ExtResource("2_wyvbo")
+script = ExtResource("3_etpgn")
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="3"]
+tree_root = SubResource("AnimationNodeBlendTree_ncs6a")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/walk/blend_amount = 1.0

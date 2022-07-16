@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=3 uid="uid://d4dc2g2jyxto7"]
+
+[ext_resource type="PackedScene" uid="uid://btfj524x0ua5f" path="res://tscn/ango.tscn" id="1_bo6c7"]
+[ext_resource type="Texture2D" uid="uid://bw2sm6l1u5cbm" path="res://hdri/approaching_storm_2k.hdr" id="1_nlv6x"]
+[ext_resource type="Script" path="res://addons/interpolated_camera_3d/interpolated_camera_3d.gd" id="3_ckxqt"]
+[ext_resource type="PackedScene" uid="uid://b5g45lptx0806" path="res://glb/house.glb" id="4_0374p"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_deahv"]
+panorama = ExtResource("1_nlv6x")
+
+[sub_resource type="Sky" id="Sky_emij8"]
+sky_material = SubResource("PanoramaSkyMaterial_deahv")
+
+[sub_resource type="Environment" id="Environment_mq0f3"]
+background_mode = 2
+sky = SubResource("Sky_emij8")
+ssil_intensity = 2.0
+ssil_sharpness = 1.0
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+sdfgi_cascades = 2
+sdfgi_max_distance = 51.2
+
+[node name="world" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mq0f3")
+
+[node name="ango" parent="." instance=ExtResource("1_bo6c7")]
+
+[node name="InterpolatedCamera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.989395, 0.0403975, -0.139523, 0, 0.960547, 0.278118, 0.145253, -0.275168, 0.95036, -0.166, 1.261, 1.176)
+script = ExtResource("3_ckxqt")
+
+[node name="house" parent="." instance=ExtResource("4_0374p")]
