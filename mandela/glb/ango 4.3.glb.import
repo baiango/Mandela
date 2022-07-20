@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dycp2qpqrgtss"
+uid="uid://bkkdxer2j6xnu"
 path="res://.godot/imported/ango 4.3.glb-4210fdd8dab48fd4838d9af1efdfa784.scn"
 
 [deps]
@@ -28,9 +28,9 @@ import_script/path=""
 _subresources={
 "animations": {
 "walk": {
-"save_to_file/enabled": false,
-"save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "",
+"save_to_file/enabled": true,
+"save_to_file/keep_custom_tracks": true,
+"save_to_file/path": "res://animation/.res",
 "settings/loop_mode": 1
 }
 }
